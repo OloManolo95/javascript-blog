@@ -36,7 +36,8 @@
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles',
     optArticleTagsSelector = '.post-tags .list',
-    optArticleAuthorSelector = '.post .post-author';
+    optArticleAuthorSelector = '.post .post-author',
+    optTagsListSelector = '.tags.list';
 
 
   const generateTitleLinks = function(customSelector = '') {
@@ -78,6 +79,9 @@
   generateTitleLinks();
 
   const generateTags = function(){
+    /* [NEW] create a new variable allTags with an empty object */
+    let allTags = {};
+
     /* [DONE] find all articles */
     const articles = document.querySelectorAll(optArticleSelector);
 
@@ -104,15 +108,41 @@
 
         /* [DONE] add generated code to html variable */
         html = html + tagHTML;
+        console.log(html);
+
+        /* [NEW] check if this link is NOT already in allTags */
+        if(!allTags[tag]) {
+          /* [NEW] add tag to allTags object */
+          allTags[tag] = 1;
+        } else {
+          allTags[tag]++;
+        }
 
         /* [DONE] END LOOP: for each tag */
       }
 
       /* [DONE] insert HTML of all the links into the tags wrapper */
       tagsWrapper.innerHTML = html;
+      console.log(html);
 
       /* [DONE] END LOOP: for every article: */
     }
+
+    /* [NEW] find list of tags in right column */
+    const tagList = document.querySelector(optTagsListSelector);
+
+    /* [NEW] create variable for all links HTML code */
+    let allTagsHTML = '';
+
+    /* [NEW] START LOOP: for each tag in allTags: */
+    for(let tag in allTags) {
+      /* [NEW] generate code of a link and add it to allTagsHTML */
+      allTagsHTML += `<li><a href="#tag-${tag}">${tag}</a> <span>${allTags[tag]}</span></li>`;
+    }
+
+    /* [NEW] add html from allTags to tagList */
+    tagList.innerHTML = allTagsHTML;
+
   };
 
   generateTags();
