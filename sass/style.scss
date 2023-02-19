@@ -112,8 +112,7 @@ body {
   font-family: $font-header;
   display: inline-block;
   position: relative;
-  font-size: 24px;
-  color: $color-dark;
+  line-height: 0;
 }
 
 .tags li a:after {
@@ -134,11 +133,12 @@ body {
   transform-origin: bottom left;
 }
 
+
+
 .titles li a {
   text-decoration: none;
   font-family: $font-header;
   color: $color-dark;
-  display: inline-block;
   position: relative;
 }
 
@@ -227,3 +227,39 @@ body {
   margin: 0 10px 0 0;
 }
 
+
+/* TAGS */
+
+.tag-size-1 {
+  font-size: 1em;
+   color: #706fd3
+  }
+
+.tag-size-2 {
+  font-size: 1.2em;
+  color: #ff5252
+}
+
+.tag-size-3 {
+  font-size: 1.4em;
+  color: #33d9b2
+}
+
+.tag-size-4 {
+  font-size: 1.6em;
+  color: #ff793f
+}
+
+.tag-size-5 {
+  font-size: 2em;
+  color: #34ace0
+}
+
+.list li {
+  display: inline-block;
+  margin: 5px;
+}
+
+.titles li {
+  display: block;
+}
