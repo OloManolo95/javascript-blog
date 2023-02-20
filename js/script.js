@@ -39,7 +39,8 @@
     optArticleAuthorSelector = '.post .post-author',
     optTagsListSelector = '.tags.list',
     optCloudClassCount = 5,
-    optCloudClassPrefix = 'tag-size-';
+    optCloudClassPrefix = 'tag-size-',
+    optAuthorsListSelector = '.authors.list';
 
 
   const generateTitleLinks = function(customSelector = '') {
@@ -267,6 +268,8 @@
 
   const generateAuthors = function() {
 
+    let allAuthors = {};
+
     const articles = document.querySelectorAll(optArticleSelector);
     for (let article of articles) {
 
@@ -280,7 +283,22 @@
 
       html = html + authorHTML;
 
+      if(!allAuthors[articleAuthor]) {
+        allAuthors[articleAuthor] = 1;
+      } else {
+        allAuthors[articleAuthor]++;
+      }
+
       authorWrapper.innerHTML = html;
+
+      const authorList = document.querySelector(optAuthorsListSelector);
+
+      let allAuthorsHtml = '';
+
+      for(author in allAuthors) {
+
+
+      }
 
     }
 
